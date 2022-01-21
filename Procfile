@@ -1,1 +1,0 @@
-worker: python juan.py ODgzOTkzNzQxODY4ODI2NjY1.YTSBUw.moaKov7JCEL1h4VtyqbWo074ZAw
