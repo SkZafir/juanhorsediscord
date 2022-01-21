@@ -14,6 +14,7 @@ import asyncpraw
 import re
 from hentai import Utils, Sort, Option, Tag, Hentai
 from pathlib import Path
+import sys
 
 reddit = asyncpraw.Reddit(client_id="dB_ham309t2MZhMKNibzDA", client_secret="7YT-RgeSuEaCArx4mzPDG3bUjtsrSg", username="juanMan34", password="JuanTheDiscordHorse1234", user_agent="juan")
 
@@ -967,4 +968,4 @@ async def _8Ball(ctx, *, question):
 
 
 
-client.run('ODgzOTkzNzQxODY4ODI2NjY1.YTSBUw.KMbzIovDOyb-YdtMZXUHpWXlKzk')
+client.run(sys.argv[1])
