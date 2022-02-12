@@ -326,9 +326,12 @@ async def circle(ctx, r, theta, arcLength, sectorArea):
 			arcLength = f"{r * theta}"
 
 	if sectorArea == "?":
+		arcLength = float(arcLength)
 		if theta == "?":
+			r = float(r)
 			theta = arcLength/r
 		elif r == "?":
+			theta = float(theta)
 			r = arcLength/theta
 
 		sectorArea = (1/2)*(r ** 2)*theta
