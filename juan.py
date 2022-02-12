@@ -15,6 +15,8 @@ import re
 from hentai import Utils, Sort, Option, Tag, Hentai
 from pathlib import Path
 import sys
+import math
+import numpy
 
 reddit = asyncpraw.Reddit(client_id="dB_ham309t2MZhMKNibzDA", client_secret="7YT-RgeSuEaCArx4mzPDG3bUjtsrSg", username="juanMan34", password="JuanTheDiscordHorse1234", user_agent="juan")
 
@@ -291,6 +293,53 @@ async def randomanime(ctx):
 	embed.add_field(name="----------------", value=field1, inline=True)
 	embed.add_field(name="----------------", value=field2, inline=True)
 	await ctx.send(embed=embed)
+
+@client.command(aliases=["cir"])
+async def circle(ctx, r, theta, arcLength, sectorArea):
+	#workout
+	if arcLength == "?":
+		sector = 1
+		try:
+			r = float(r)
+			sector = sector - 1
+		except:
+			sectorArea = float(sectorArea)
+			sector = sector + 1
+		try:
+			theta = float(theta)
+			sector = sector - 1
+		except:
+			sectorArea = float(sectorArea)
+			sector = sector + 1
+
+		if sector > 0:
+			if r == "?":
+				r = math.sqrt(sectorArea/(theta/2))
+
+			elif theta == "?":
+				theta = sectorArea/((r ** 2)/2)
+				
+
+			arcLength = f"{r * theta}"
+
+		else:
+			arcLength = f"{r * theta}"
+
+	if sectorArea == "?":
+		if theta == "?":
+			theta = arcLength/r
+		elif r == "?":
+			r = arcLength/theta
+
+		sectorArea = (1/2)*(r ** 2)*theta
+
+	if (r and theta) == "?":
+		arcLength = float(arcLength)
+		sectorArea = float(sectorArea)
+		theta = (arcLength ** 2)/(sectorArea * 2)
+		r = math.sqrt(sectorArea/(theta/2))
+
+	await ctx.send(f"Radius: {r}cm\nTheta: {theta} rad\nArc Length: {arcLength}cm\nSector Area: {sectorArea}cm^2")
 
 
 @client.command(aliases=["wiki"])
