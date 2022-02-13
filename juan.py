@@ -892,6 +892,7 @@ async def play(ctx, file):
 	else:
 		voice.play(discord.FFmpegPCMAudio(file))
 
+
 @client.command(aliases=["ps"])
 async def playsound(ctx, search, num="1"):
 	search = search.replace("_", "+")
